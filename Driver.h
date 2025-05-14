@@ -1,5 +1,6 @@
 #pragma once
 #include "Violation.h"
+#include "ArrayTemplate.h"
 
 struct Driver {
 	char name[100] = "";  //Ім'я водія
@@ -13,7 +14,7 @@ struct Driver {
 		cout << "Введіть номер автомобіля (AX0000AX): ";
 		cin >> carNumber;
 
-		cout << "Введіть інформацію по його порушенню: ";
+		cout << "Введіть інформацію по його порушенню:\n";
 		size_viol = 1;
 		arr_viol = new Violation[1];
 		arr_viol[0].fillViol();
@@ -29,5 +30,14 @@ struct Driver {
 			arr_viol[i].printViol();
 		}
 		cout << endl;
+	}
+
+	void addNewViol() {
+		Violation obj;
+		cout << "Введіть інформацію НОВЕ порушення:\n";
+		obj.fillViol();
+		
+		addItemBack(arr_viol, size_viol, obj);
+		cout << "Нове порушення зафіксовано!!!\n\n";
 	}
 };
